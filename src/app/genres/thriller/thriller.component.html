@@ -1,0 +1,44 @@
+<section class="mb-5">
+  <div class="row text-light justify-content-between card-title">
+    <div class="col-3">
+      <h2>Thriller</h2>
+    </div>
+    <div class="col-3 btn-movies">
+      <a role="button" class="btn btn-outline-light btn-sm" routerLink="/home">Back Home</a>
+    </div>
+  </div>
+  <div class="card-deck  justify-content-around">
+    <ul class="videoList" *ngFor="let httpMovie of getFilterMovies('thriller')">
+      <li>
+        <div class="card text-light card-movies">
+          <a class="videos" href="#moviesModal{{httpMovie.id}}" data-toggle="modal"  data-backdrop="static" data-keyboard="false">
+            <img [src]="httpMovie.image" alt="angel has fallen" class="card-img-top img-fluid card-images">
+            <div class="card-body">
+              <h4 class="card-title">{{httpMovie.name}}</h4>
+            </div>
+          </a>
+        </div>
+        <div id="moviesModal{{httpMovie.id}}" class="modal fade">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark text-light">
+              <div class="modal-header">
+                <h3 class="modal-title">{{httpMovie.name}}</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="close" (click)="stopMovie()"><span class="text-light" aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                  <iframe class="embed-responsive-item" [src]="getEmbedUrl(httpMovie.video)"
+                    allowfullscreen #stopMovie></iframe>
+                </div>
+                <p class="my-4">{{httpMovie.content}}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-outline-light mx-auto px-5" data-dismiss="modal" (click)="stopMovie()">Back</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>

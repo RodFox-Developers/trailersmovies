@@ -1,0 +1,73 @@
+hr {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 2%;
+  padding: 0.1% 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+  background-color: darkslategray;
+  border-color: darkslategray;
+}
+
+.video-header {
+  position: relative;
+}
+
+.content {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  height: 30%;
+  padding: 1% 5%;
+}
+
+.content h1 {
+  display: inline;
+  position: absolute;
+}
+
+.audio-button {
+  display: inline;
+  position: absolute;
+  right: 5%;
+}
+
+.audio-button a {
+  color: #f1f1f193;
+}
+
+main {
+  padding: 0 2%;
+}
+
+
+/* MOVIES */
+
+.card-movies {
+    background-color: black;
+    text-align: center;
+    max-width: 200px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.btn-movies {
+    text-align: end;
+}
+
+.card-title {
+    margin: 0 1%;
+}
+
+.videos, .videos:hover {
+  color:white;
+}
+
+.videoList {
+  list-style-type: none;
+  padding: 0;
+}
