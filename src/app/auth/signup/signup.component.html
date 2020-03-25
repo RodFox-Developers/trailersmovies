@@ -1,35 +1,48 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 alert alert-danger">
-      {{authError?.message}}
+<div class="row justify-content-center signup-form">
+  <div class="col-6">
+    <form #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)">
+
+      <h3>Sign Up</h3>
+
+      <div class="row" *ngIf="authError">
+        <div class="col-12 alert alert-danger">
+          {{authError?.message}}
+        </div>
+      </div>
+
+      <div *ngIf="user">
+        <h4 class="alert-success p-3">You have successfully logged</h4>
+      </div>
+
+      <div class="row" *ngIf="!user">
+        <div class="col-md-6 mb-2">
+          <label for="firstName">First name</label>
+          <input ngModel #firstname="ngModel" name="firstName" type="text" class="form-control" id="firstName">
+        </div>
+        <div class="col-md-6 mb-2">
+          <label for="lastName">Last name</label>
+          <input ngModel #lastname="ngModel" name="lastName" type="text" class="form-control" id="lastName" value="">
+        </div>
+        <div class="col-md-12 mb-2">
+          <label for="email">Email</label>
+          <input ngModel #email="ngModel" name="email" type="email" class="form-control">
+        </div>
+        <div class="col-md-12 mb-2">
+          <label for="password">Password</label>
+          <input ngModel #password="ngModel" name="password" type="password" class="form-control">
+        </div>
+        <div class="col-md-12 mb-2">
+          <label>Confirm Password</label>
+          <input name="password" type="password" class="form-control">
+        </div>
+        <div class="col-md-12 form-btn">
+          <button type="button" class="btn btn-secondary mr-4" [routerLink]="['/home']" routerLinkActive="router-link-active" >Back Home</button>
+          <button type="submit" class="btn btn-primary px-5">Submit</button>
+        </div>
+      </div>
+    </form>
+    <div class="col-md-12 form-btn">
+      <button *ngIf="user" type="button" class="btn btn-secondary mr-4" [routerLink]="['/home']" routerLinkActive="router-link-active" >Back Home</button>
     </div>
   </div>
-  <form #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)">
-    <div class="row">
-      <div class="col-md-6 mb-2">
-        <label for="firstName">First name</label>
-        <input ngModel #firstname="ngModel" name="firstName" type="text" class="form-control" id="firstName">
-      </div>
-      <div class="col-md-6 mb-2">
-        <label for="lastName">Last name</label>
-        <input ngModel #lastname="ngModel" name="lastName" type="text" class="form-control" id="lastName" value="">
-      </div>
-      <div class="col-md-12 mb-2">
-        <label for="email">Email</label>
-        <input ngModel #email="ngModel" name="email" type="email" class="form-control">
-      </div>
-      <div class="col-md-12 mb-2">
-        <label for="password">Password</label>
-        <input ngModel #password="ngModel" name="password" type="password" class="form-control">
-      </div>
-      <div class="col-md-12 mb-2">
-        <label>Confirm Password</label>
-        <input name="password" type="password" class="form-control">
-      </div>
-      <div class="col-md-12 form-btn">
-        <button type="button" class="btn btn-secondary mr-4" data-dismiss="modal">Close</button>
-        <button id="dismiss-modal" type="submit" class="btn btn-primary px-5">Submit</button>
-      </div>
-    </div>
-  </form>
 </div>

@@ -34,11 +34,11 @@ export class AuthService {
       .catch(error => {
         this.eventAuthError.next(error);
       })
-     /*  .then(userCredential => {
+      .then(userCredential => {
         if (userCredential) {
           this.router.navigateByUrl('/home');
         }
-      }); */
+      });
   }
 
 
@@ -51,7 +51,7 @@ export class AuthService {
           displayName: user.firstName + ' ' + user.lastName
         });
 
-       /*  this.insertUserData(userCredential)
+        /* this.insertUserData(userCredential)
           .then(() => {
             this.router.navigate(['/home']);
           }); */

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class MoviesService {
 
-  private moviesUrl = '/assets/SERVER/movies.json';
+  private moviesUrl = 'https://trailersmovies-79632.firebaseio.com/movies.json';
 
   constructor(private http: HttpClient) { }
 

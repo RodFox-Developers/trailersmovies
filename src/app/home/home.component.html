@@ -23,7 +23,8 @@
         <h2>Action/Adventure</h2>
       </div>
       <div class="col-3 btn-movies">
-        <a role="button" class="btn btn-outline-light btn-sm" routerLink="/action">View All</a>
+        <a *ngIf="user" role="button" class="btn btn-outline-light btn-sm" routerLink="/action">View All</a>
+        <a *ngIf="!user" role="button" class="btn btn-outline-light btn-sm" routerLink="/login">View All</a>
       </div>
     </div>
     <div class="card-deck  justify-content-sm-around">
@@ -67,7 +68,8 @@
         <h2>Comedy</h2>
       </div>
       <div class="col-3 btn-movies">
-        <a role="button" class="btn btn-outline-light btn-sm" routerLink="/comedy">View All</a>
+        <a *ngIf="user" role="button" class="btn btn-outline-light btn-sm" routerLink="/comedy">View All</a>
+        <a *ngIf="!user" role="button" class="btn btn-outline-light btn-sm" routerLink="/login">View All</a>
       </div>
     </div>
     <div class="card-deck justify-content-around">
@@ -111,7 +113,8 @@
         <h2>Drama</h2>
       </div>
       <div class="col-3 btn-movies">
-        <a role="button" class="btn btn-outline-light btn-sm" routerLink="/drama">View All</a>
+        <a *ngIf="user" role="button" class="btn btn-outline-light btn-sm" routerLink="/drama">View All</a>
+        <a *ngIf="!user" role="button" class="btn btn-outline-light btn-sm" routerLink="/login">View All</a>
       </div>
     </div>
     <div class="card-deck  justify-content-around">
@@ -156,7 +159,8 @@
         <h2>Horror</h2>
       </div>
       <div class="col-3 btn-movies">
-        <a role="button" class="btn btn-outline-light btn-sm" routerLink="/horror">View All</a>
+        <a *ngIf="user" role="button" class="btn btn-outline-light btn-sm" routerLink="/horror">View All</a>
+        <a *ngIf="!user" role="button" class="btn btn-outline-light btn-sm" routerLink="/login">View All</a>
       </div>
     </div>
     <div class="card-deck  justify-content-around">
@@ -201,7 +205,8 @@
         <h2>Sci-Fi</h2>
       </div>
       <div class="col-3 btn-movies">
-        <a role="button" class="btn btn-outline-light btn-sm" routerLink="/sci-fi">View All</a>
+        <a *ngIf="user" role="button" class="btn btn-outline-light btn-sm" routerLink="/sci-fi">View All</a>
+        <a *ngIf="!user" role="button" class="btn btn-outline-light btn-sm" routerLink="/login">View All</a>
       </div>
     </div>
     <div class="card-deck  justify-content-around">
@@ -246,7 +251,8 @@
         <h2>Thriller</h2>
       </div>
       <div class="col-3 btn-movies">
-        <a role="button" class="btn btn-outline-light btn-sm" routerLink="/thriller">View All</a>
+        <a *ngIf="user" role="button" class="btn btn-outline-light btn-sm" routerLink="/thriller">View All</a>
+        <a *ngIf="!user" role="button" class="btn btn-outline-light btn-sm" routerLink="/login">View All</a>
       </div>
     </div>
     <div class="card-deck  justify-content-around">
@@ -285,3 +291,4 @@
     </div>
   </section>
 </main>
+

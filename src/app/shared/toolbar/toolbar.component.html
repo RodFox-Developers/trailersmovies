@@ -11,7 +11,7 @@
       <div class="collapse navbar-collapse row" id="collapsibleNavbar">
 
         <div class="col-9">
-          <nav class="navbar-nav justify-content-start pl-5">
+          <nav *ngIf="user" class="navbar-nav justify-content-start pl-5">
             <form class="form-inline nav-item btn-user">
               <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-sm btn-outline-light my-2 my-sm-0" type="submit">Search</button>
@@ -32,8 +32,8 @@
         </div>
         <div class="col-3">
           <nav class="navbar-nav nav-fill">
-            <button type="button" class="btn btn-sm btn-outline-light nav-item mr-2" data-toggle="modal" data-target="#loginModal" *ngIf="!user">Log-In</button>
-            <button type="button" class="btn btn-sm btn-outline-light nav-item" data-toggle="modal" data-target="#signupModal" *ngIf="!user">Sign-Up</button>
+            <button type="button" class="btn btn-sm btn-outline-light nav-item mr-2" [routerLink]="['/login']" routerLinkActive="router-link-active"  *ngIf="!user">Log-In</button>
+            <button type="button" class="btn btn-sm btn-outline-light nav-item" [routerLink]="['/signup']" routerLinkActive="router-link-active"  *ngIf="!user">Sign-Up</button>
 
             <h5 class="text-white mr-4" *ngIf="user">Hi - {{ user?.displayName }}</h5>
             <button type="button" class="btn btn-sm btn-outline-light nav-item" *ngIf="user" (click)="logout()">Logout</button>
@@ -46,99 +46,3 @@
 
   </section>
 </header>
-
-<!-- Modal -->
-<div class="modal fade" id="signupModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sign-Up</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-12 alert alert-danger">
-            {{authError?.message}}
-          </div>
-        </div>
-        <form #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)">
-          <div class="row">
-            <div class="col-md-6 mb-2">
-              <label for="firstName">First name</label>
-              <input ngModel #firstname="ngModel" name="firstName" type="text" class="form-control" id="firstName">
-            </div>
-            <div class="col-md-6 mb-2">
-              <label for="lastName">Last name</label>
-              <input ngModel #lastname="ngModel" name="lastName" type="text" class="form-control" id="lastName" value="">
-            </div>
-            <div class="col-md-12 mb-2">
-              <label for="email">Email</label>
-              <input ngModel #email="ngModel" name="email" type="email" class="form-control">
-            </div>
-            <div class="col-md-12 mb-2">
-              <label for="password">Password</label>
-              <input ngModel #password="ngModel" name="password" type="password" class="form-control">
-            </div>
-            <div class="col-md-12 mb-2">
-              <label>Confirm Password</label>
-              <input name="password" type="password" class="form-control">
-            </div>
-            <div class="col-md-12 form-btn">
-              <button type="button" class="btn btn-secondary mr-4" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary px-5">Submit</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div #loginModal class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Log-In</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-12">
-            <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-
-              <div class="row" *ngIf="authError">
-                <div class="col-12 alert alert-danger">{{ authError?.message }}</div>
-              </div>
-
-              <div class="row">
-                <div class="col-12">
-                  <label for="email">Email</label>
-                  <input ngModel #email="ngModel" name="email" type="email" class="form-control">
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-12">
-                  <label for="password">Password</label>
-                  <input ngModel #password="ngModel" name="password" type="password" class="form-control">
-                </div>
-              </div>
-
-              <div class="row mt-2">
-                <div class="col-12">
-                  <button type="button" class="btn btn-secondary mr-4" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary px-5" (click)="closeModal()">Log-In</button>
-                </div>
-              </div>
-
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

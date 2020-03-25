@@ -9,13 +9,19 @@ import { AuthService } from '../auth.service';
 export class SignupComponent implements OnInit {
 
   authError: any;
+  user: firebase.User;
 
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
+    this.auth.getUserState()
+    .subscribe( user => {
+      this.user = user;
+    });
+
     this.auth.eventAuthError$.subscribe(data => {
       this.authError = data;
-    })
+    });
   }
 
   createUser(frm) {

@@ -21,9 +21,8 @@ import { HorrorComponent } from './genres/horror/horror.component';
 import { SciFiComponent } from './genres/sci-fi/sci-fi.component';
 import { ThrillerComponent } from './genres/thriller/thriller.component';
 import { LoginComponent } from './auth/login/login.component';
-import { EmailComponent } from './auth/email/email.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { MembersComponent } from './auth/members/members.component';
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCfTRvBoJPamu9rnVIHU142NcDguoTPLUo",
@@ -50,10 +49,7 @@ export const firebaseConfig = {
     SciFiComponent,
     ThrillerComponent,
     LoginComponent,
-    EmailComponent,
-    SignupComponent,
-    MembersComponent,
-
+    SignupComponent
   ],
   imports: [
     BrowserModule,

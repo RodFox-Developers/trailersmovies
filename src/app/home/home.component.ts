@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { IMovies } from '../interfaces';
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
@@ -17,10 +18,16 @@ export class HomeComponent implements OnInit {
   public videoHeader = './assets/videos/terminatorDarkFate.mp4';
   isMuted: boolean = true;
 
+  user: firebase.User;
+
   public httpMovies: IMovies[] = [];
   public errorMsg = [];
 
-  constructor(private _httpMovieServices: MoviesService, private sanitizer: DomSanitizer) { }
+  constructor(
+    private _httpMovieServices: MoviesService,
+    private sanitizer: DomSanitizer,
+    private auth: AuthService
+    ) { }
 
   ngOnInit() {
     this._httpMovieServices.getHttpMovies()
@@ -29,6 +36,10 @@ export class HomeComponent implements OnInit {
         error => this.errorMsg = error
       );
 
+    this.auth.getUserState()
+    .subscribe( user => {
+      this.user = user;
+    });
   }
 
   getHeaderEmbedUrl() {
