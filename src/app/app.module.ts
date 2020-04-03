@@ -22,6 +22,7 @@ import { SciFiComponent } from './genres/sci-fi/sci-fi.component';
 import { ThrillerComponent } from './genres/thriller/thriller.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { MoviesPipe } from './movies.pipe';
 
 
 export const firebaseConfig = {
@@ -49,7 +50,8 @@ export const firebaseConfig = {
     SciFiComponent,
     ThrillerComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    MoviesPipe
   ],
   imports: [
     BrowserModule,

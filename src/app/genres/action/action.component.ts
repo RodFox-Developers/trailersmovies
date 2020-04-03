@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MoviesService } from 'src/app/movies.service';
 import { IMovies } from 'src/app/interfaces';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -9,6 +9,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./action.component.css']
 })
 export class ActionComponent implements OnInit {
+
+  @ViewChild('stopMovie', {static: false}) stopVideo: ElementRef;
 
   public httpMovies: IMovies[] = [];
   public errorMsg = [];
@@ -24,7 +26,7 @@ export class ActionComponent implements OnInit {
   }
 
   getEmbedUrl(idVideo) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl('http://www.hd-trailers.net/embed/' + idVideo + '/1-trailer-720p/');
+    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + idVideo);
   }
 
   getFilterMovies(g): IMovies[] {
@@ -33,5 +35,9 @@ export class ActionComponent implements OnInit {
     });
     return filteredMovie.reverse();
   }
+
+  stopMovie() {
+    return this.stopVideo.nativeElement.setAttribute('src', null);
+   }
 
 }

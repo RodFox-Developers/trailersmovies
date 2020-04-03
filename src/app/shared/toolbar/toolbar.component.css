@@ -11,3 +11,33 @@
   background: rgba(0, 0, 0, 0.8);
   margin: 0;
 }
+
+.card-movies {
+  background-color: black;
+  text-align: center;
+  max-width: 100px;
+  object-fit: cover;
+}
+
+.btn-movies {
+  text-align: end;
+}
+
+.card-title {
+  margin: 0 1%;
+  font-size: 0.8em;
+}
+
+.videos, .videos:hover {
+color:white;
+}
+
+.videoList {
+list-style-type: none;
+
+
+}
+
+.video-search {
+  padding: 8% 0 0;
+}

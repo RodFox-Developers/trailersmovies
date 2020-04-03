@@ -1,4 +1,4 @@
-<header>
+<header class="fixed-top">
   <section>
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top nav-menu">
@@ -12,11 +12,9 @@
 
         <div class="col-9">
           <nav *ngIf="user" class="navbar-nav justify-content-start pl-5">
-            <form class="form-inline nav-item btn-user">
-              <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-sm btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-            </form>
-
+            <div class="form-inline form-group nav-item btn-user">
+              <button type="button" class="btn btn-sm btn-outline-light nav-item px-5" data-toggle="collapse" href="#searchDiv" aria-expand="false" aria-controls="searchDiv"><i class="fas fa-search mr-1"></i>Search</button>
+            </div>
             <div class="dropdown">
               <button type="button" class="btn btn-sm btn-outline-light nav-item dropdown-toggle" data-toggle="dropdown" id="generesDropdown" aria-haspopup="true" aria-expanded="false">All Genres</button>
                 <div class="dropdown-menu" aria-labelledby="generesDropdown">
@@ -35,14 +33,53 @@
             <button type="button" class="btn btn-sm btn-outline-light nav-item mr-2" [routerLink]="['/login']" routerLinkActive="router-link-active"  *ngIf="!user">Log-In</button>
             <button type="button" class="btn btn-sm btn-outline-light nav-item" [routerLink]="['/signup']" routerLinkActive="router-link-active"  *ngIf="!user">Sign-Up</button>
 
-            <h5 class="text-white mr-4" *ngIf="user">Hi - {{ user?.displayName }}</h5>
+            <h5 class="text-white mr-4" *ngIf="user"><i class="far fa-user mr-1"></i> {{ user?.displayName }}</h5>
             <button type="button" class="btn btn-sm btn-outline-light nav-item" *ngIf="user" (click)="logout()">Logout</button>
           </nav>
-
         </div>
-
       </div>
     </nav>
-
   </section>
+
+  <div id="searchDiv" class="row collapse justify-content-center nav-menu video-search">
+    <div class="col-6 mb-2">
+      <input class="form-control form-control-sm mr-sm-2" type="text" placeholder="Search Movie" [(ngModel)]="searchMovie">
+    </div>
+    <div class="col-12">
+      <div class="card-deck  justify-content-center">
+        <ul class="videoList" *ngFor="let movie of httpMovies | movieFilter:searchMovie | slice:0:4;">
+          <li>
+            <div class="card text-light card-movies mx-5">
+              <a class="videos" href="#moviesModal{{movie.id}}" data-toggle="modal"  data-backdrop="static" data-keyboard="false">
+                <img [src]="movie.image" [alt]="movie.name" class="card-img-top img-fluid card-images">
+                <div class="card-body">
+                  <h4 class="card-title">{{movie.name}}</h4>
+                </div>
+              </a>
+            </div>
+            <div id="moviesModal{{movie.id}}" class="modal fade">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content bg-dark text-light">
+                  <div class="modal-header">
+                    <h3 class="modal-title">{{movie.name}}</h3>
+                    <button (click)="stopMovie()" type="button" class="close" data-dismiss="modal" aria-label="close"><span class="text-light" aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                      <iframe #stopMovie class="embed-responsive-item" [src]="getEmbedUrl(movie.video)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p class="my-4">{{movie.content}}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button (click)="stopMovie()" type="button" class="btn btn-sm btn-outline-light mx-auto px-5" data-dismiss="modal">Back</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </header>

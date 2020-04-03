@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('stopMovie', {static: false}) stopVideo: ElementRef;
 
-  public videoHeader = './assets/videos/terminatorDarkFate.mp4';
+  public videoHeader = 'https://firebasestorage.googleapis.com/v0/b/trailersmovies-79632.appspot.com/o/headerMovie%2FterminatorDarkFate.mp4?alt=media&token=946a9b09-5c27-49b0-ac96-6ad42fa4e593';
+
   isMuted: boolean = true;
 
   user: firebase.User;
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit {
     private _httpMovieServices: MoviesService,
     private sanitizer: DomSanitizer,
     private auth: AuthService
-    ) { }
+    ) {}
 
   ngOnInit() {
     this._httpMovieServices.getHttpMovies()
@@ -40,22 +41,15 @@ export class HomeComponent implements OnInit {
     .subscribe( user => {
       this.user = user;
     });
-  }
 
-  getHeaderEmbedUrl() {
-    // to embed from youtube
-/*     return this.getEmbedUrl(this.httpMovies[0].video + '?version=3&autoplay=1;&mute=1;&controls=0;&modestbranding=0;&loop=1;&playlist=' + this.httpMovies[0].video); */
-
-    // to embed from server
-    return this.videoHeader;
   }
 
   getEmbedUrl(idVideo) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl('http://www.hd-trailers.net/embed/' + idVideo + '/1-trailer-720p/');
+    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + idVideo);
   }
 
   stopMovie() {
-    this.stopVideo.nativeElement.setElementAttribute('src', null);
+    return this.stopVideo.nativeElement.setAttribute('src', null);
    }
 
   audioToggle() {
@@ -66,7 +60,9 @@ export class HomeComponent implements OnInit {
     const filteredMovie = this.httpMovies.filter((httpMovie) => {
       return httpMovie.genre === g;
     });
+
     return filteredMovie.reverse();
+
   }
 
 }

@@ -12,7 +12,7 @@
       <li>
         <div class="card text-light card-movies">
           <a class="videos" href="#moviesModal{{httpMovie.id}}" data-toggle="modal"  data-backdrop="static" data-keyboard="false">
-            <img [src]="httpMovie.image" alt="angel has fallen" class="card-img-top img-fluid card-images">
+            <img [src]="httpMovie.image" [alt]="httpMovie.name" class="card-img-top img-fluid card-images">
             <div class="card-body">
               <h4 class="card-title">{{httpMovie.name}}</h4>
             </div>

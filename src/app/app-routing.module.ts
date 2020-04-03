@@ -13,16 +13,16 @@ import { SignupComponent } from './auth/signup/signup.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'home', component: HomeComponent},
   {path: 'action', component: ActionComponent},
   {path: 'comedy', component: ComedyComponent},
   {path: 'drama', component: DramaComponent},
   {path: 'horror', component: HorrorComponent},
   {path: 'sci-fi', component: SciFiComponent},
   {path: 'thriller', component: ThrillerComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: '**', component: PageNotFoundComponent}
 ];
 
