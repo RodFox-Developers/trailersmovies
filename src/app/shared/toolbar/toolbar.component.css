@@ -33,11 +33,10 @@ color:white;
 }
 
 .videoList {
-list-style-type: none;
-
-
+  list-style-type: none;
 }
 
 .video-search {
   padding: 8% 0 0;
+  background-color: black;
 }
