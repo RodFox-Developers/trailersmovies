@@ -3,3 +3,11 @@
   padding-top: 8%;
   color: white;
 }
+
+/* MEDIA QUERY */
+
+@media only screen and (max-width: 600px) {
+  .signup-form {
+    padding-top: 25%;
+  }
+}

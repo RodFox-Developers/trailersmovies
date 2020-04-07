@@ -10,6 +10,7 @@ import { ThrillerComponent } from './genres/thriller/thriller.component';
 import { HorrorComponent } from './genres/horror/horror.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'horror', component: HorrorComponent},
   {path: 'sci-fi', component: SciFiComponent},
   {path: 'thriller', component: ThrillerComponent},
+  {path: 'search', component: SearchComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: '**', component: PageNotFoundComponent}
 ];

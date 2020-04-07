@@ -8,7 +8,7 @@
   </div>
 
   <div class="content col">
-    <h1>{{httpMovies[0].name}}</h1>
+    <p>{{httpMovies[0].name}}</p>
     <div class="audio-button btn-group-toggle">
       <a role="button" class="btn btn-lg" *ngIf="isMuted" (click)="audioToggle()"><i class="fas fa-volume-mute"></i></a>
       <a role="button" class="btn btn-lg" *ngIf="!isMuted" (click)="audioToggle()"><i class="fas fa-volume-up"></i></a>
@@ -20,7 +20,7 @@
   <section class="mb-5">
     <div class="row text-light justify-content-between card-title">
       <div class="col-3">
-        <h2>Action/Adventure</h2>
+        <h4>Action/Adventure</h4>
       </div>
       <div class="col-3 btn-movies">
         <a *ngIf="user" role="button" class="btn btn-outline-light btn-sm" routerLink="/action">View All Actions / Adventures</a>

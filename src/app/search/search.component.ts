@@ -1,16 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { AuthService } from 'src/app/auth/auth.service';
-import { IMovies } from 'src/app/interfaces';
-import { MoviesService } from 'src/app/movies.service';
+import { MoviesService } from '../movies.service';
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { IMovies } from '../interfaces';
 
 @Component({
-  selector: 'app-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class ToolbarComponent implements OnInit {
+export class SearchComponent implements OnInit {
 
   @ViewChild('stopMovie', {static: false}) stopVideo: ElementRef;
 
@@ -19,10 +17,7 @@ export class ToolbarComponent implements OnInit {
   public httpMoviesSearch: IMovies[] = [];
   public errorMsg = [];
 
-  user: firebase.User;
-
   constructor(
-    private auth: AuthService,
     private _httpMovieServices: MoviesService,
     private sanitizer: DomSanitizer
   ) { }
@@ -33,15 +28,6 @@ export class ToolbarComponent implements OnInit {
         data => this.httpMoviesSearch = data,
         error => this.errorMsg = error
       );
-
-    this.auth.getUserState()
-      .subscribe( user => {
-        this.user = user;
-      });
-  }
-
-  logout() {
-    this.auth.logout();
   }
 
   getEmbedUrl(idVideo) {
@@ -51,4 +37,5 @@ export class ToolbarComponent implements OnInit {
   stopMovie() {
     return this.stopVideo.nativeElement.setAttribute('src', null);
    }
+
 }

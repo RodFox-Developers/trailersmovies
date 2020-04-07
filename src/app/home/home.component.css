@@ -25,9 +25,10 @@ hr {
   padding: 1% 5%;
 }
 
-.content h1 {
+.content p {
   display: inline;
   position: absolute;
+  font-size: 1.6rem;
 }
 
 .audio-button {
@@ -72,3 +73,11 @@ main {
   padding: 0;
 }
 
+
+/* MEDIA QUERY */
+
+@media only screen and (max-width: 600px) {
+  .video-header {
+    padding-top: 20%;
+  }
+}
